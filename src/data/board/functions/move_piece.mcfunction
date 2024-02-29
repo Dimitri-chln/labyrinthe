@@ -19,10 +19,10 @@ execute as @a[scores={players=1..4}] if score @s players = current_player player
 
 # Check if the item is one of their card
 ## Broadcast message
-execute if score current_player players_info matches 1 as @e[tag=belongs_to_player_1,distance=..1] run tellraw @a [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=1},limit=1]"}]}, " a trouvé une de ses cartes"]
-execute if score current_player players_info matches 2 as @e[tag=belongs_to_player_2,distance=..1] run tellraw @a [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=2},limit=1]"}]}, " a trouvé une de ses cartes"]
-execute if score current_player players_info matches 3 as @e[tag=belongs_to_player_3,distance=..1] run tellraw @a [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=3},limit=1]"}]}, " a trouvé une de ses cartes"]
-execute if score current_player players_info matches 4 as @e[tag=belongs_to_player_4,distance=..1] run tellraw @a [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=4},limit=1]"}]}, " a trouvé une de ses cartes"]
+execute if score current_player players_info matches 1 as @e[tag=belongs_to_player_1,distance=..1] run tellraw @a[scores={players=1..4}] [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=1},limit=1]"}]}, " a trouvé une de ses cartes"]
+execute if score current_player players_info matches 2 as @e[tag=belongs_to_player_2,distance=..1] run tellraw @a[scores={players=1..4}] [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=2},limit=1]"}]}, " a trouvé une de ses cartes"]
+execute if score current_player players_info matches 3 as @e[tag=belongs_to_player_3,distance=..1] run tellraw @a[scores={players=1..4}] [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=3},limit=1]"}]}, " a trouvé une de ses cartes"]
+execute if score current_player players_info matches 4 as @e[tag=belongs_to_player_4,distance=..1] run tellraw @a[scores={players=1..4}] [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=4},limit=1]"}]}, " a trouvé une de ses cartes"]
 ## Remove the item from the player's inventory
 execute as @a[scores={players=1..4}] if score @s players = current_player players_info if entity @e[tag=item_1,distance=..1] run clear @s minecraft:white_dye
 execute as @a[scores={players=1..4}] if score @s players = current_player players_info if entity @e[tag=item_2,distance=..1] run clear @s minecraft:light_gray_dye
@@ -55,13 +55,13 @@ execute if score current_player players_info matches 3 as @e[tag=belongs_to_play
 execute if score current_player players_info matches 4 as @e[tag=belongs_to_player_4,distance=..1] run kill @s
 
 # Check if the player has found all their cards
-execute if score current_player players_info matches 1 unless entity @e[tag=belongs_to_player_1] unless score player_1_found_all_cards players_info matches 1 run tellraw @a [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=1},limit=1]"}]}, " a trouvé toutes ses cartes !"]
+execute if score current_player players_info matches 1 unless entity @e[tag=belongs_to_player_1] unless score player_1_found_all_cards players_info matches 1 run tellraw @a[scores={players=1..4}] [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=1},limit=1]"}]}, " a trouvé toutes ses cartes !"]
 execute if score current_player players_info matches 1 unless entity @e[tag=belongs_to_player_1] unless score player_1_found_all_cards players_info matches 1 run scoreboard players set player_1_found_all_cards players_info 1
-execute if score current_player players_info matches 2 unless entity @e[tag=belongs_to_player_2] unless score player_2_found_all_cards players_info matches 1 run tellraw @a [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=2},limit=1]"}]}, " a trouvé toutes ses cartes !"]
+execute if score current_player players_info matches 2 unless entity @e[tag=belongs_to_player_2] unless score player_2_found_all_cards players_info matches 1 run tellraw @a[scores={players=1..4}] [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=2},limit=1]"}]}, " a trouvé toutes ses cartes !"]
 execute if score current_player players_info matches 2 unless entity @e[tag=belongs_to_player_2] unless score player_2_found_all_cards players_info matches 1 run scoreboard players set player_1_found_all_cards players_info 1
-execute if score current_player players_info matches 3 unless entity @e[tag=belongs_to_player_3] unless score player_3_found_all_cards players_info matches 1 run tellraw @a [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=3},limit=1]"}]}, " a trouvé toutes ses cartes !"]
+execute if score current_player players_info matches 3 unless entity @e[tag=belongs_to_player_3] unless score player_3_found_all_cards players_info matches 1 run tellraw @a[scores={players=1..4}] [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=3},limit=1]"}]}, " a trouvé toutes ses cartes !"]
 execute if score current_player players_info matches 3 unless entity @e[tag=belongs_to_player_3] unless score player_3_found_all_cards players_info matches 1 run scoreboard players set player_1_found_all_cards players_info 1
-execute if score current_player players_info matches 4 unless entity @e[tag=belongs_to_player_4] unless score player_4_found_all_cards players_info matches 1 run tellraw @a [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=4},limit=1]"}]}, " a trouvé toutes ses cartes !"]
+execute if score current_player players_info matches 4 unless entity @e[tag=belongs_to_player_4] unless score player_4_found_all_cards players_info matches 1 run tellraw @a[scores={players=1..4}] [{"text": "[Labyrinthe] ", "color": "gray"}, {"text":"", "extra":[{"selector":"@a[scores={players=4},limit=1]"}]}, " a trouvé toutes ses cartes !"]
 execute if score current_player players_info matches 4 unless entity @e[tag=belongs_to_player_4] unless score player_4_found_all_cards players_info matches 1 run scoreboard players set player_1_found_all_cards players_info 1
 
 # Check if the player has won
