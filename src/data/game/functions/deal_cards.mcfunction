@@ -30,6 +30,7 @@ summon armor_stand -1 0 -1 {Invulnerable: 1b, Invisible: 1b, NoGravity: 1b, Disa
 # Calculate the number of cards each player will get
 scoreboard players operation number_of_cards_per_player labyrinthe_players_info = 24 labyrinthe_constants
 scoreboard players operation number_of_cards_per_player labyrinthe_players_info /= number_of_players labyrinthe_players_info
+scoreboard players operation @a[scores={labyrinthe_players=1..4}] labyrinthe_remaining_cards = number_of_cards_per_player labyrinthe_players_info
 
 # Give the players their cards
 execute if score number_of_players labyrinthe_players_info matches 1..4 run scoreboard players set current_player_receiving_cards labyrinthe_players_info 1

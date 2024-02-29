@@ -45,10 +45,10 @@ execute as @a[scores={labyrinthe_players=1}] run team join labyrinthe_blue @s
 execute as @a[scores={labyrinthe_players=2}] run team join labyrinthe_green @s
 execute as @a[scores={labyrinthe_players=3}] run team join labyrinthe_red @s
 execute as @a[scores={labyrinthe_players=4}] run team join labyrinthe_yellow @s
-execute as @a[scores={labyrinthe_players=1}] run tellraw @s ["Tu es le joueur ", {"text": "bleu", "color": "blue"}, " !"]
-execute as @a[scores={labyrinthe_players=2}] run tellraw @s ["Tu es le joueur ", {"text": "vert", "color": "green"}, " !"]
-execute as @a[scores={labyrinthe_players=3}] run tellraw @s ["Tu es le joueur ", {"text": "rouge", "color": "red"}, " !"]
-execute as @a[scores={labyrinthe_players=4}] run tellraw @s ["Tu es le joueur ", {"text": "jaune", "color": "yellow"}, " !"]
+execute as @a[scores={labyrinthe_players=1}] run tellraw @s [{"text": "[Labyrinthe] Tu es le joueur ", "color": "gray"}, {"text": "bleu", "color": "blue"}, " !"]
+execute as @a[scores={labyrinthe_players=2}] run tellraw @s [{"text": "[Labyrinthe] Tu es le joueur ", "color": "gray"}, {"text": "vert", "color": "green"}, " !"]
+execute as @a[scores={labyrinthe_players=3}] run tellraw @s [{"text": "[Labyrinthe] Tu es le joueur ", "color": "gray"}, {"text": "rouge", "color": "red"}, " !"]
+execute as @a[scores={labyrinthe_players=4}] run tellraw @s [{"text": "[Labyrinthe] Tu es le joueur ", "color": "gray"}, {"text": "jaune", "color": "yellow"}, " !"]
 
 # Players info
 scoreboard objectives remove labyrinthe_players_info
@@ -68,13 +68,20 @@ scoreboard players set player_3_found_all_cards labyrinthe_players_info 0
 scoreboard players set player_4_found_all_cards labyrinthe_players_info 0
 scoreboard players set winner labyrinthe_players_info 0
 
+# Remaining tiles
+scoreboard objectives remove labyrinthe_remaining_cards
+scoreboard objectives add labyrinthe_remaining_cards dummy "Cartes restantes"
+scoreboard objectives setdisplay sidebar labyrinthe_remaining_cards
+
+# Teleport all players to above the board and change their gamemode
+execute as @a[scores={labyrinthe_players=1..4}] run tp @s 3 6 3
+execute as @a[scores={labyrinthe_players=1..4}] run gamemode adventure @s
+
 # Build the board
 function board:build
 
 # Deal the items to the players
 function game:deal_cards
-
-execute as @a[scores={labyrinthe_players=1..4}] run tp @s 3 6 3
 
 # Start the first turn
 function game:start_turn

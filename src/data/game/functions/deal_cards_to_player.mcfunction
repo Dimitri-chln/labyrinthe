@@ -1,5 +1,5 @@
 # Give a dummy item to fill the player's first slot
-execute as @a[scores={labyrinthe_players=1..4}] if score @s labyrinthe_players = current_player labyrinthe_players_info unless data entity @s Inventory[{id: "minecraft:iron_nugget"}] run give @s minecraft:iron_nugget 1
+execute as @a[scores={labyrinthe_players=1..4}] if score @s labyrinthe_players = current_player_receiving_cards labyrinthe_players_info unless data entity @s Inventory[{id: "minecraft:iron_nugget"}] run give @s minecraft:iron_nugget 1
 
 # Select a random card
 tp @e[tag=labyrinthe_item_card,sort=random,limit=1] -1 1 -1
@@ -159,4 +159,4 @@ execute positioned -1 1 -1 as @e[tag=labyrinthe_item_card,distance=0] run kill @
 execute if score remaining_cards labyrinthe_players_info matches 1.. run function game:deal_cards_to_player
 
 # Otherwise clear the player's first slot
-execute unless score remaining_cards labyrinthe_players_info matches 1.. as @a[scores={labyrinthe_players=1..4}] if score @s labyrinthe_players = current_player labyrinthe_players_info run clear @s minecraft:iron_nugget 1
+execute unless score remaining_cards labyrinthe_players_info matches 1.. as @a[scores={labyrinthe_players=1..4}] if score @s labyrinthe_players = current_player_receiving_cards labyrinthe_players_info run clear @s minecraft:iron_nugget 1

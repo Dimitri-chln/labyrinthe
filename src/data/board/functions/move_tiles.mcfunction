@@ -80,7 +80,7 @@ scoreboard players set moving_tile labyrinthe_move_tiles 0
 execute as @a[scores={labyrinthe_players=1..4}] if score @s labyrinthe_players = current_player labyrinthe_players_info run give @s minecraft:magma_cream{display: {Name: '{"text": "Se déplacer", "color": "red"}'}} 1
 
 # Find the path the player can take
-execute if score current_player labyrinthe_players_info matches 1 as @e[tag=labyrinthe_player_piece_1] at @s positioned ~ 0 ~ run function board:find_path
-execute if score current_player labyrinthe_players_info matches 2 as @e[tag=labyrinthe_player_piece_2] at @s positioned ~ 0 ~ run function board:find_path
-execute if score current_player labyrinthe_players_info matches 3 as @e[tag=labyrinthe_player_piece_3] at @s positioned ~ 0 ~ run function board:find_path
-execute if score current_player labyrinthe_players_info matches 4 as @e[tag=labyrinthe_player_piece_4] at @s positioned ~ 0 ~ run function board:find_path
+execute if score current_player labyrinthe_players_info matches 1 as @e[tag=labyrinthe_player_piece_1] at @s align xz positioned ~0.5 0 ~0.5 run function board:find_path
+execute if score current_player labyrinthe_players_info matches 2 as @e[tag=labyrinthe_player_piece_2] at @s align xz positioned ~0.5 0 ~0.5 run function board:find_path
+execute if score current_player labyrinthe_players_info matches 3 as @e[tag=labyrinthe_player_piece_3] at @s align xz positioned ~0.5 0 ~0.5 run function board:find_path
+execute if score current_player labyrinthe_players_info matches 4 as @e[tag=labyrinthe_player_piece_4] at @s align xz positioned ~0.5 0 ~0.5 run function board:find_path

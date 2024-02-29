@@ -1,7 +1,5 @@
 # Delete previous board
-kill @e[type=armor_stand,tag=labyrinthe_tile]
-kill @e[type=armor_stand,tag=labyrinthe_item]
-kill @e[type=armor_stand,tag=labyrinthe_random_item]
+kill @e[type=armor_stand,tag=labyrinthe_board]
 kill @e[type=armor_stand,tag=labyrinthe_player_piece]
 kill @e[type=armor_stand,tag=labyrinthe_reachable_tile]
 
