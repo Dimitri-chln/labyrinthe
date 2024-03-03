@@ -80,7 +80,7 @@ execute as @a[scores={labyrinthe_players=1..4}] run gamemode adventure @s
 # Build the board
 function board:build
 
-# Deal the items to the players
+# Deal the cards to the players
 function game:deal_cards
 
 # Start the first turn
